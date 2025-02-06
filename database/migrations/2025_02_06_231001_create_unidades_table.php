@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('unidades', function (Blueprint $table) {
             $table->id();
+            $table->string('nome fantasia');
+            $table->string('razao social');
+            $table->string('cnpj')->unique();
+            $table->foreignId('bandeira_id')->constrained('bandeiras')->onDelete('cascade'); // FK para a tabela bandeiras;
             $table->timestamps();
         });
     }
