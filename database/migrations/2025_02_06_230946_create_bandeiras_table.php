@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('bandeiras', function (Blueprint $table) {
             $table->id();
+            $table->string('nome');
+            $table->foreignId('GrupoEconomico')->constrained('grupo_economicos')->onDelete('cascade'); // FK para a tabela grupo_economicos;
             $table->timestamps();
         });
     }
