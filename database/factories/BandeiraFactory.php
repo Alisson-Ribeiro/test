@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\GrupoEconomico;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class BandeiraFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nome' => $this->faker->name,                          // gera nome aleatório
+            'grupo_economico_id' => GrupoEconomico::Factory(),    // gera uma grupo economico relacionado
+            'created_at' => now(),                                 // data de criação
+            'updated_at' => now(),                                 // data de atualização
         ];
     }
 }
