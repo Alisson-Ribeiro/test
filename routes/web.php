@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GrupoEconomicoController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('grupo_economicos', GrupoEconomicoController::class);
