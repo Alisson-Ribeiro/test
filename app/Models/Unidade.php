@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Unidade extends Model
 {
-    use SoftDeletes; // Ativando Soft Deletes
+    use SoftDeletes, HasFactory; // Ativando Soft Deletes          // HasFactory for fake data and tests
 
     public function Colaborador(){
         return $this->hasMany(Colaborador::class);
