@@ -10,6 +10,8 @@ class GrupoEconomico extends Model
 {
     use SoftDeletes, HasFactory; // Ativando Soft Deletes           // HasFactory for fake data and tests
 
+    protected $fillable = ['nome'];
+
     public function bandeiras(){
         return $this->hasMany(Bandeira::class);
     }

@@ -10,6 +10,8 @@ class Bandeira extends Model
 {
     use SoftDeletes, HasFactory; // Ativando Soft Deletes              // HasFactory for fake data and tests
 
+    protected $fillable = ['nome', 'grupo_economico_id'];
+
     public function GrupoEconomico(){
         return $this->belongsTo(GrupoEconomico::class);
     }
