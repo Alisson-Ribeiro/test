@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('cpf', 14)->unique();
             $table->foreignId('unidade_id')->constrained('unidades')->onDelete('cascade'); // FK para a tabela unidades
             $table->timestamps();
+            $table->softDeletes();   // adiciona a coluna deleted_at
         });
     }
 

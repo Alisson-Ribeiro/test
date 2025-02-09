@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('cnpj')->unique();
             $table->foreignId('bandeira_id')->constrained('bandeiras')->onDelete('cascade'); // FK para a tabela bandeiras;
             $table->timestamps();
+            $table->softDeletes();   // adiciona a coluna deleted_at
         });
     }
 
