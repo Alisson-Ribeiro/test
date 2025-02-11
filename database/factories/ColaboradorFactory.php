@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ColaboradorFactory extends Factory
 {
-    protected $model = Colaborador::class();
+    protected $model = Colaborador::class;
     /**
      * Define the model's default state.
      *
