@@ -10,7 +10,7 @@ class Unidade extends Model
 {
     use SoftDeletes, HasFactory; // Ativando Soft Deletes          // HasFactory for fake data and tests
 
-    protected $fillable = ['nome fantasia', 'razao social', 'cnpj', 'bandeira_id'];
+    protected $fillable = ['nome_fantasia', 'razao_social', 'cnpj', 'bandeira_id'];
 
     public function Colaborador(){
         return $this->hasMany(Colaborador::class);

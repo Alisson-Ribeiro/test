@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('unidades', function (Blueprint $table) {
             $table->id();
-            $table->string('nome_fantasia');
-            $table->string('razao_social');
-            $table->string('cnpj')->unique();
-            $table->foreignId('bandeira_id')->constrained('bandeiras')->onDelete('cascade'); // FK para a tabela bandeiras;
+            $table->string('nome_fantasia')->nullable(false); // O campo não permite valores nulos
+            $table->string('razao_social')->nullable(false); // O campo não permite valores nulos
+            $table->string('cnpj')->unique()->nullable(false); // O campo não permite valores nulos
+            $table->foreignId('bandeira_id')->constrained('bandeiras')->onDelete('cascade')->nullable(false); // FK para a tabela bandeiras;
             $table->timestamps();
             $table->softDeletes();   // adiciona a coluna deleted_at
         });
