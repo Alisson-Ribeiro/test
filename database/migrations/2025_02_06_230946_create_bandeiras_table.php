@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('bandeiras', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', max(255))->nullable(false);  // O campo não permite valores nulos
-            $table->foreignId('grupo_economico_id')->constrained('grupo_economicos')->onDelete('cascade')->nullable(false); // FK para a tabela grupo_economicos;
+            $table->string('nome')->nullable(false);  // O campo não permite valores nulos
+            $table->foreignId('grupos_economico_id')->constrained('grupos_economicos')->onDelete('cascade')->nullable(false); // FK para a tabela grupo_economicos;
             $table->timestamps();
             $table->softDeletes();   // adiciona a coluna deleted_at
         });
