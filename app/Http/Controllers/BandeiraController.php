@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bandeira;
 use Illuminate\Http\Request;
+use App\Models\GrupoEconomico;
 
 class BandeiraController extends Controller
 {
@@ -12,7 +13,8 @@ class BandeiraController extends Controller
      */
     public function index()
     {
-        //
+        $bandeiras = Bandeira::with('GrupoEconomico')->get();
+        return view('bandeiras.index', compact('bandeiras'));
     }
 
     /**
@@ -20,7 +22,8 @@ class BandeiraController extends Controller
      */
     public function create()
     {
-        //
+        $grupo_economicos = GrupoEconomico::all(); // Obtém todos os Grupos economicos do banco
+        return view('bandeiras.create', compact('grupo_economicos'));
     }
 
     /**
@@ -28,7 +31,14 @@ class BandeiraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes = $request->validate([
+            'nome' => ['required', 'string', 'max:255'],
+            'grupo_economico_id' => ['required', 'exists:grupo_economicos,id'],
+        ]);
+
+        Bandeira::create($attributes);
+
+        return redirect()->route('bandeiras.index')->with('success', 'Bandeira criada com sucesso!');
     }
 
     /**
@@ -36,15 +46,18 @@ class BandeiraController extends Controller
      */
     public function show(Bandeira $bandeira)
     {
-        //
+        return view('bandeiras.show', compact('bandeira'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Bandeira $bandeira)
+    public function edit($id)
     {
-        //
+        $bandeira = Bandeira::findOrFail($id);
+        $grupo_economicos = GrupoEconomico::all(); // Buscando todos os grupos econômicos
+
+        return view('bandeiras.edit', compact('bandeira', 'grupo_economicos'));
     }
 
     /**
@@ -52,7 +65,14 @@ class BandeiraController extends Controller
      */
     public function update(Request $request, Bandeira $bandeira)
     {
-        //
+        $attributes = $request->validate([
+            'nome' => ['sometimes', 'required', 'string', 'max:255'],
+            'grupo_economico_id' => ['sometimes', 'required', 'exists:grupo_economicos,id'],
+        ]);
+
+        $bandeira->update($attributes);
+
+        return redirect()->route('bandeiras.index')->with('success', 'Bandeira atualizada com sucesso!');
     }
 
     /**
@@ -60,6 +80,8 @@ class BandeiraController extends Controller
      */
     public function destroy(Bandeira $bandeira)
     {
-        //
+        $bandeira->delete();
+
+        return redirect()->route('bandeiras.index')->with('success', 'Bandeira excluída com sucesso!');
     }
 }
