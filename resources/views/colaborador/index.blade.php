@@ -37,7 +37,7 @@
                         <td>{{ $colaborador->nome }}</td>
                         <td>{{ $colaborador->email }}</td>
                         <td>{{ $colaborador->cpf }}</td>
-                        <td>{{ $colaborador->unidade_id }}</td> <!-- Exibindo a unidade -->
+                        <td>{{ $colaborador->nome_fantasia }}</td> <!-- Exibindo a unidade -->
                         <td>
                             <a href="{{ route('colaborador.show', $colaborador->id) }}" class="btn btn-info btn-sm">Ver</a>
                             <a href="{{ route('colaborador.edit', $colaborador->id) }}" class="btn btn-warning btn-sm">Editar</a>
