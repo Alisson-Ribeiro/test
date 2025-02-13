@@ -10,6 +10,8 @@ class Colaborador extends Model
 {
     use SoftDeletes, HasFactory; // Ativando Soft Deletes            // HasFactory for fake data and tests
 
+    protected $table = 'colaboradores';
+
     protected $fillable = ['nome', 'email', 'cpf', 'unidade_id'];
 
     public function Unidade(){
