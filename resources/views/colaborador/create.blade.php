@@ -52,7 +52,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-success">Salvar</button>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
             <a href="{{ route('colaborador.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>

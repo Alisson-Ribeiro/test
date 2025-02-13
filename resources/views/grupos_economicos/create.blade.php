@@ -30,7 +30,7 @@
                 <input type="text" class="form-control" id="nome" name="nome" value="{{ old('nome') }}" required>
             </div>
 
-            <button type="submit" class="btn btn-success">Criar Grupo Econômico</button>
+            <button type="submit" class="btn btn-primary">Criar Grupo Econômico</button>
             <a href="{{ route('grupos_economicos.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>

@@ -11,9 +11,12 @@
         <h1 class="mb-4">Detalhes do Grupo Econômico</h1>
 
         <div class="card">
+            <div class="card-header">
+                <strong>{{ $grupoEconomico->nome}}</strong>
+            </div>
             <div class="card-body">
-                <h5 class="card-title">Nome</h5>
-                <p class="card-text">{{ $grupoEconomico->nome }}</p>
+                <p><strong>Data de Criação:</strong> {{ $grupoEconomico->created_at->format('d/m/Y H:i') }}</p>
+                <p><strong>Última Atualização:</strong> {{ $grupoEconomico->updated_at->format('d/m/Y H:i') }}</p>
             </div>
         </div>
 

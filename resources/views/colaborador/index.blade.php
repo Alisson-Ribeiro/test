@@ -17,9 +17,9 @@
             </div>
         @endif
 
-        <a href="{{ route('colaborador.create') }}" class="btn btn-success mb-3">Adicionar Novo Colaborador</a>
+        <a href="{{ route('colaborador.create') }}" class="btn btn-primary mb-3">Cadastrar Novo Colaborador</a>
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -40,7 +40,7 @@
                         <td>{{ $colaborador->unidade_id }}</td> <!-- Exibindo a unidade -->
                         <td>
                             <a href="{{ route('colaborador.show', $colaborador->id) }}" class="btn btn-info btn-sm">Ver</a>
-                            <a href="{{ route('colaborador.edit', $colaborador->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="{{ route('colaborador.edit', $colaborador->id) }}" class="btn btn-warning btn-sm">Editar</a>
                             
                             <!-- Formulário para excluir -->
                             <form action="{{ route('colaborador.destroy', $colaborador->id) }}" method="POST" class="d-inline"

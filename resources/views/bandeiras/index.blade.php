@@ -22,7 +22,7 @@
 
         <!-- Tabela de bandeiras -->
         <table class="table table-bordered">
-            <thead>
+            <thead class="table-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>

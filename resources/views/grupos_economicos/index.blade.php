@@ -17,9 +17,9 @@
             </div>
         @endif
 
-        <a href="{{ route('grupos_economicos.create') }}" class="btn btn-success mb-3">Adicionar Novo Grupo Econômico</a>
+        <a href="{{ route('grupos_economicos.create') }}" class="btn btn-primary mb-3">Criar Novo Grupo Econômico</a>
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered">
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
@@ -34,7 +34,7 @@
                         <td>{{ $grupoEconomico->nome }}</td>
                         <td>
                             <a href="{{ route('grupos_economicos.show', $grupoEconomico->id) }}" class="btn btn-info btn-sm">Ver</a>
-                            <a href="{{ route('grupos_economicos.edit', $grupoEconomico->id) }}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="{{ route('grupos_economicos.edit', $grupoEconomico->id) }}" class="btn btn-warning btn-sm">Editar</a>
                             <form action="{{ route('grupos_economicos.destroy', $grupoEconomico->id) }}" method="POST" class="d-inline" 
                                   onsubmit="return confirm('Tem certeza que deseja excluir este grupo econômico?');">
                                 @csrf

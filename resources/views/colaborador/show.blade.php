@@ -11,24 +11,21 @@
         <h1 class="mb-4">Detalhes do Colaborador</h1>
 
         <div class="card">
+            <div class="card-header">
+                <strong>{{ $colaborador->nome}}</strong>
+            </div>
             <div class="card-body">
-                <h5 class="card-title">Nome</h5>
-                <p class="card-text">{{ $colaborador->nome }}</p>
-
-                <h5 class="card-title">E-mail</h5>
-                <p class="card-text">{{ $colaborador->email }}</p>
-
-                <h5 class="card-title">CPF</h5>
-                <p class="card-text">{{ $colaborador->cpf }}</p>
-
-                <h5 class="card-title">Unidade</h5>
-                <p class="card-text">{{ $colaborador->unidade_id }}</p> <!-- Exibindo a unidade -->
+                <p><strong>E-mail: </strong>{{ $colaborador->email }}</p>
+                <p><strong>CPF: </strong>{{ $colaborador->cpf }}</p>
+                <p><strong>Unidade: </strong>{{ $colaborador->unidade_id }}</p>
+                <p><strong>Data de Criação:</strong> {{ $colaborador->created_at->format('d/m/Y H:i') }}</p>
+                <p><strong>Última Atualização:</strong> {{ $colaborador->updated_at->format('d/m/Y H:i') }}</p>
             </div>
         </div>
 
         <div class="mt-3">
             <a href="{{ route('colaborador.index') }}" class="btn btn-secondary">Voltar</a>
-            <a href="{{ route('colaborador.edit', $colaborador->id) }}" class="btn btn-primary">Editar</a>
+            <a href="{{ route('colaborador.edit', $colaborador->id) }}" class="btn btn-warning">Editar</a>
             
             <!-- Formulário para exclusão -->
             <form action="{{ route('colaborador.destroy', $colaborador->id) }}" method="POST" class="d-inline"
