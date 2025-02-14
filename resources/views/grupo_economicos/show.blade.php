@@ -21,11 +21,11 @@
         </div>
 
         <div class="mt-3">
-            <a href="{{ route('grupos_economicos.index') }}" class="btn btn-secondary">Voltar</a>
-            <a href="{{ route('grupos_economicos.edit', $grupoEconomico->id) }}" class="btn btn-primary">Editar</a>
+            <a href="{{ route('grupo_economicos.index') }}" class="btn btn-secondary">Voltar</a>
+            <a href="{{ route('grupo_economicos.edit', $grupoEconomico->id) }}" class="btn btn-warning">Editar</a>
             
             <!-- Botão de exclusão -->
-            <form action="{{ route('grupos_economicos.destroy', $grupoEconomico->id) }}" method="POST" class="d-inline" 
+            <form action="{{ route('grupo_economicos.destroy', $grupoEconomico->id) }}" method="POST" class="d-inline" 
                   onsubmit="return confirm('Tem certeza que deseja excluir este grupo econômico?');">
                 @csrf
                 @method('DELETE')

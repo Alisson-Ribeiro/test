@@ -22,7 +22,7 @@
         @endif
 
         <!-- Formulário para editar Grupo Econômico -->
-        <form action="{{ route('grupos_economicos.update', $grupoEconomico->id) }}" method="POST">
+        <form action="{{ route('grupo_economicos.update', $grupoEconomico->id) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -33,7 +33,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Atualizar Grupo Econômico</button>
-            <a href="{{ route('grupos_economicos.index') }}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{ route('grupo_economicos.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

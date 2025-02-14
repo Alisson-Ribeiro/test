@@ -22,7 +22,7 @@
         @endif
 
         <!-- Formulário para criar Grupo Econômico -->
-        <form action="{{ route('grupos_economicos.store') }}" method="POST">
+        <form action="{{ route('grupo_economicos.store') }}" method="POST">
             @csrf
 
             <div class="mb-3">
@@ -31,7 +31,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Criar Grupo Econômico</button>
-            <a href="{{ route('grupos_economicos.index') }}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{ route('grupo_economicos.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

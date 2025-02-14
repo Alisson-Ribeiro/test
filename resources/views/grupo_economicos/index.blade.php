@@ -17,7 +17,7 @@
             </div>
         @endif
 
-        <a href="{{ route('grupos_economicos.create') }}" class="btn btn-primary mb-3">Criar Novo Grupo Econômico</a>
+        <a href="{{ route('grupo_economicos.create') }}" class="btn btn-primary mb-3">Criar Novo Grupo Econômico</a>
 
         <table class="table table-bordered">
             <thead class="table-dark">
@@ -28,14 +28,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($grupos_economicos as $grupoEconomico)
+                @foreach($grupo_economicos as $grupoEconomico)
                     <tr>
                         <td>{{ $grupoEconomico->id }}</td>
                         <td>{{ $grupoEconomico->nome }}</td>
                         <td>
-                            <a href="{{ route('grupos_economicos.show', $grupoEconomico->id) }}" class="btn btn-info btn-sm">Ver</a>
-                            <a href="{{ route('grupos_economicos.edit', $grupoEconomico->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                            <form action="{{ route('grupos_economicos.destroy', $grupoEconomico->id) }}" method="POST" class="d-inline" 
+                            <a href="{{ route('grupo_economicos.show', $grupoEconomico->id) }}" class="btn btn-info btn-sm">Ver</a>
+                            <a href="{{ route('grupo_economicos.edit', $grupoEconomico->id) }}" class="btn btn-warning btn-sm">Editar</a>
+                            <form action="{{ route('grupo_economicos.destroy', $grupoEconomico->id) }}" method="POST" class="d-inline" 
                                   onsubmit="return confirm('Tem certeza que deseja excluir este grupo econômico?');">
                                 @csrf
                                 @method('DELETE')
