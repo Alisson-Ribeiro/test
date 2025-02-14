@@ -13,6 +13,6 @@ class ColaboradorSeeder extends Seeder
      */
     public function run(): void
     {
-        Colaborador::factory()->count(5)->create(); // cria 5 registros no banco
+        Colaborador::factory()->count(5)->create();
     }
 }

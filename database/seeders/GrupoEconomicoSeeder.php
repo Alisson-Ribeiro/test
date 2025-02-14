@@ -13,6 +13,6 @@ class GrupoEconomicoSeeder extends Seeder
      */
     public function run(): void
     {
-        GrupoEconomico::factory()->count(5)->create(); // cria 50 registros no banco
+        GrupoEconomico::factory()->count(5)->create();
     }
 }

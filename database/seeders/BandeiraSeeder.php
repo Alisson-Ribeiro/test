@@ -13,6 +13,6 @@ class BandeiraSeeder extends Seeder
      */
     public function run(): void
     {
-        Bandeira::factory()->count(5)->create(); // cria 5 registros no banco
+        Bandeira::factory()->count(5)->create();
     }
 }

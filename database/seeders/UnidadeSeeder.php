@@ -13,6 +13,6 @@ class UnidadeSeeder extends Seeder
      */
     public function run(): void
     {
-        Unidade::factory()->count(5)->create(); // cria 5 registros no banco
+        Unidade::factory()->count(5)->create();
     }
 }
