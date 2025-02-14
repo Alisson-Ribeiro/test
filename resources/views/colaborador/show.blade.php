@@ -17,7 +17,7 @@
             <div class="card-body">
                 <p><strong>E-mail: </strong>{{ $colaborador->email }}</p>
                 <p><strong>CPF: </strong>{{ $colaborador->cpf }}</p>
-                <p><strong>Unidade: </strong>{{ $colaborador->nome_fantasia }}</p>
+                <p><strong>Unidade: </strong>{{ $colaborador->unidade_id }}</p>
                 <p><strong>Data de Criação:</strong> {{ $colaborador->created_at->format('d/m/Y H:i') }}</p>
                 <p><strong>Última Atualização:</strong> {{ $colaborador->updated_at->format('d/m/Y H:i') }}</p>
             </div>

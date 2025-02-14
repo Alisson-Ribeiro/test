@@ -12,7 +12,7 @@ class Colaborador extends Model
 
     protected $table = 'colaboradores';
 
-    protected $fillable = ['nome', 'email', 'cpf', 'nome_fantasia', 'unidade_id'];
+    protected $fillable = ['nome', 'email', 'cpf', 'unidade_id'];
 
     public function Unidade(){
         return $this->belongsTo(Unidade::class);
