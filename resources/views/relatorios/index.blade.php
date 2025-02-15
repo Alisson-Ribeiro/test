@@ -118,7 +118,7 @@
 
         <!-- Botão Voltar -->
         <div class="text-center mt-4 mb-4">
-            <a href="{{ route('grupo_economicos.index') }}" class="btn btn-primary w-50">
+            <a href="{{ route('dashboard') }}" class="btn btn-primary w-40">
                  Voltar
             </a>
         </div>

@@ -69,6 +69,11 @@
         </div>
 
     </div>
+    <div class="text-center mt-4 mb-4">
+        <a href="{{ route('dashboard') }}" class="btn btn-primary w-40">
+             Voltar
+        </a>
+    </div>
 
     <script>
         function toggleDetails(id) {

@@ -34,7 +34,7 @@
                         <th>Nome</th>
                         <th>Email</th>
                         <th>CPF</th>
-                        <th>Unidade</th>
+                        <th>Unidade ID</th>
                         <th class="text-center">Ações</th>
                     </tr>
                 </thead>
@@ -71,6 +71,11 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="text-center mt-4 mb-4">
+        <a href="{{ route('dashboard') }}" class="btn btn-primary w-40">
+             Voltar
+        </a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
