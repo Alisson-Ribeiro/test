@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuditController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\BandeiraController;
@@ -14,6 +15,8 @@ Route::resource('unidades', UnidadeController::class);
 Route::resource('colaborador', ColaboradorController::class);
 
 Route::get('/relatorios', [RelatorioController::class, 'index'])->name('relatorios.index');
+
+Route::get('/auditoria', [AuditController::class, 'index'])->name('auditoria.index');
 
 Route::get('/export/unidade', [ExportController::class, 'exportUnidade'])->name('export.unidade');
 Route::get('/export/bandeira', [ExportController::class, 'exportBandeira'])->name('export.bandeira');
