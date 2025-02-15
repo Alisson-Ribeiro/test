@@ -67,6 +67,7 @@
         <div class="d-flex justify-content-center mt-4">
             {{ $audits->links() }}
         </div>
+
     </div>
 
     <script>

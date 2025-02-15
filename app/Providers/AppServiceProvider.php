@@ -8,6 +8,7 @@ use App\Models\Bandeira;
 use App\Models\Unidade;
 use App\Models\GrupoEconomico;
 use App\Observers\AuditObserver;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
         Bandeira::observe(AuditObserver::class);
         Unidade::observe(AuditObserver::class);
         GrupoEconomico::observe(AuditObserver::class);
+        Paginator::useBootstrapFive(); // Garantindo que a paginação use Bootstrap 5
     }
 }
