@@ -7,39 +7,121 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Relatórios do Sistema</h1>
-        
-            <h2>📌 Dados Gerais</h2>
-            <ul>
-                <li><strong>Total de Colaboradores:</strong> {{ $dados['totalColaboradores'] }}</li>
-                <li><strong>Total de Bandeiras:</strong> {{ $dados['totalBandeiras'] }}</li>
-                <li><strong>Total de Unidades:</strong> {{ $dados['totalUnidades'] }}</li>
-                <li><strong>Total de Grupos Econômicos:</strong> {{ $dados['totalGruposEconomicos'] }}</li>
-            </ul>
-            
-            <h2>📌 Colaboradores por Unidade</h2>
-            <ul>
-                @foreach($dados['colaboradoresPorUnidade'] as $item)
-                    <strong><li>Unidade {{ $item->unidade_id }}:</strong> {{ $item->total }} colaboradores</li>
-                @endforeach
-            </ul>
-            
-        <h2>📌 Unidades por Bandeira</h2>
-        <ul>
-            @foreach($dados['unidadesPorBandeira'] as $item)
-                <strong><li>Bandeira {{ $item->bandeira_id }}:</strong> {{ $item->total }} unidades</li>
-            @endforeach
-        </ul>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">📊 Relatórios do Sistema</h1>
 
-        <h2>📌 Bandeiras por Grupo Econômico</h2>
-        <ul>
-            @foreach($dados['bandeirasPorGrupoEconomico'] as $item)
-                <strong><li>Grupo Econômico {{ $item->grupo_economico_id }}:</strong> {{ $item->total }} bandeiras</li>
-            @endforeach
-        </ul>
+        <!-- Dados Gerais -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">📌 Dados Gerais</h2>
+                <div class="row">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="alert alert-primary text-center">
+                            <strong>Total de Colaboradores:</strong> {{ $dados['totalColaboradores'] }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="alert alert-success text-center">
+                            <strong>Total de Bandeiras:</strong> {{ $dados['totalBandeiras'] }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="alert alert-warning text-center">
+                            <strong>Total de Unidades:</strong> {{ $dados['totalUnidades'] }}
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="alert alert-info text-center">
+                            <strong>Total de Grupos Econômicos:</strong> {{ $dados['totalGruposEconomicos'] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <a href="{{ route('grupo_economicos.index') }}" class="btn btn-primary">Voltar</a>
+        <!-- Botões de Exportação -->
+        <div class="text-center mb-4">
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ route('export.colaborador') }}" class="btn btn-primary w-100">
+                        📂 Exportar Colaboradores
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ route('export.bandeira') }}" class="btn btn-primary w-100">
+                        📂 Exportar Bandeiras
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ route('export.unidade') }}" class="btn btn-primary w-100">
+                        📂 Exportar Unidades
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ route('export.grupo_economico') }}" class="btn btn-primary w-100">
+                        📂 Exportar Grupos Econômicos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Listas de Dados -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">📌 Colaboradores por Unidade</h2>
+                        <ul class="list-group">
+                            @foreach($dados['colaboradoresPorUnidade'] as $item)
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Unidade {{ $item->unidade_id }}:</strong>
+                                    <span class="badge bg-primary">{{ $item->total }} colaboradores</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">📌 Unidades por Bandeira</h2>
+                        <ul class="list-group">
+                            @foreach($dados['unidadesPorBandeira'] as $item)
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Bandeira {{ $item->bandeira_id }}:</strong>
+                                    <span class="badge bg-success">{{ $item->total }} unidades</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title">📌 Bandeiras por Grupo Econômico</h2>
+                        <ul class="list-group">
+                            @foreach($dados['bandeirasPorGrupoEconomico'] as $item)
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <strong>Grupo {{ $item->grupo_economico_id }}:</strong>
+                                    <span class="badge bg-warning">{{ $item->total }} bandeiras</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão Voltar -->
+        <div class="text-center mt-4 mb-4">
+            <a href="{{ route('grupo_economicos.index') }}" class="btn btn-primary w-50">
+                 Voltar
+            </a>
+        </div>
     </div>
 </body>
 </html>
