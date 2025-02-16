@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Unidade;
 use App\Models\Colaborador;
 use Illuminate\Http\Request;
+use App\Mail\NewColaboradorCreated;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ColaboradorController extends Controller
 {
@@ -32,6 +35,7 @@ class ColaboradorController extends Controller
      */
     public function store(Request $request)
     {
+        // validacao dos dados
         $attributes = $request->validate([
             'nome' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:colaboradores,email'],
@@ -39,7 +43,16 @@ class ColaboradorController extends Controller
             'unidade_id' => ['required', 'integer', 'exists:unidades,id'],
         ]);
 
-        Colaborador::create($attributes);
+        // cria o colaborador no banco de dados
+        $colaborador = Colaborador::create($attributes);
+
+        // obtem o usuario autenticado
+        $user = Auth::user();
+
+        // envia o email para o usuario autenticado
+        Mail::to($user->email)->queue(
+            new NewColaboradorCreated($colaborador)
+        );
 
         return redirect()->route('colaborador.index')->with('success', 'Colaborador criado com sucesso!');
     }
