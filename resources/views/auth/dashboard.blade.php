@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        {{-- <span class="nav-link text-white"><i class="bi bi-person-circle"></i> {{ $user->name }}</span> --}}
+                        <span class="nav-link text-white"><i class="bi bi-person-circle"></i> {{ $user=Auth::user()->name }}</span>
                     </li>
                     <li class="nav-item">
                         <form method="POST" action="{{ route('logout') }}" class="d-inline">
@@ -39,7 +39,7 @@
     <!-- Conteúdo do Dashboard -->
     <div class="container mt-5">
         <div class="text-center mb-4">
-            {{-- <h2 class="text-primary">Bem-vindo(a), {{ $user->name }}!</h2> --}}
+            <h2 class="text-primary">Bem-vindo(a), {{ $user=Auth::user()->name }}!</h2>
             <p class="text-muted">Este é seu painel de controle.</p>
         </div>
 
