@@ -31,6 +31,16 @@
 - php artisan serve
 - php artisan queue:work
 
+## infelizmente será necessário fazer a adição de um usuário ao banco através do recurso 'php artisan tinker' pois não tive tempo hábil para solucinar um bug na rota de registro
+### use App\Models\User;
+### use Illuminate\Support\Facades\Hash;
+
+### User::create([
+    'name' => 'Novo Usuário',
+    'email' => 'novousuario@example.com',
+    'password' => Hash::make('senha1234'),
+]);
+
 
 ## EN-US
 ## Installing this project to your development enviroment is that simple
@@ -64,3 +74,13 @@
 - php artisan key:generate
 - php artisan serve
 - php artisan queue:work
+
+## Unfortunately, it will be necessary to add a user to the database using the 'php artisan tinker' feature as I did not have enough time to resolve a bug in the registration route
+### use App\Models\User;
+### use Illuminate\Support\Facades\Hash;
+
+### User::create([
+    'name' => 'Novo Usuário',
+    'email' => 'novousuario@example.com',
+    'password' => Hash::make('senha1234'),
+]);
