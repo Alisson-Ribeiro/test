@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Unidade;
 use App\Models\Bandeira;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UnidadeController extends Controller
 {
@@ -34,7 +35,20 @@ class UnidadeController extends Controller
         $attributes = $request->validate([
             'nome_fantasia' => ['required', 'string', 'max:255'],
             'razao_social' => ['required', 'string', 'max:255', 'unique:unidades,razao_social'],
-            'cnpj' => ['required', 'string', 'size:14', 'unique:unidades,cnpj'],
+
+            'cnpj' => [
+            'required', 
+            'string', 
+            'size:14', // CNPJ deve ter exatamente 14 caracteres
+            'regex:/^\d{14}$/', // Apenas números
+            'unique:unidades,cnpj',
+            function ($attribute, $value, $fail) {
+                if (!validarCNPJ($value)) {
+                    $fail('O CNPJ informado é inválido.');
+                }
+            }
+        ],
+
             'bandeira' => ['required', 'exists:bandeiras,id'],
         ]);
 
@@ -73,7 +87,20 @@ class UnidadeController extends Controller
         $attributes = $request->validate([
             'nome_fantasia' => ['required', 'string', 'max:255'],
             'razao_social' => ['required', 'string', 'max:255', 'unique:unidades,razao_social,' . $unidade->id],
-            'cnpj' => ['required', 'string', 'size:14', 'unique:unidades,cnpj,' . $unidade->id],
+            
+            'cnpj' => [
+            'sometimes', 
+            'string', 
+            'size:14', // CNPJ deve ter exatamente 14 caracteres
+            'regex:/^\d{14}$/', // Apenas números
+            Rule::unique('unidades', 'cnpj')->ignore($unidade->id), // Permite o mesmo CNPJ do próprio registro
+            function ($attribute, $value, $fail) {
+                if (!validarCNPJ($value)) {
+                    $fail('O CNPJ informado é inválido.');
+                }
+            }
+        ],
+
             'bandeira' => ['required', 'exists:bandeiras,id'],
         ]);
 
@@ -96,4 +123,39 @@ class UnidadeController extends Controller
         $unidade->delete();
         return redirect()->route('unidades.index')->with('success', 'Unidade excluída com sucesso!');
     }
+}
+
+function validarCNPJ($cnpj) {
+    $cnpj = preg_replace('/[^0-9]/', '', $cnpj);
+
+    if (strlen($cnpj) != 14) {
+        return false;
+    }
+
+    $invalidos = [
+        '00000000000000', '11111111111111', '22222222222222', '33333333333333',
+        '44444444444444', '55555555555555', '66666666666666', '77777777777777',
+        '88888888888888', '99999999999999'
+    ];
+    if (in_array($cnpj, $invalidos)) {
+        return false;
+    }
+
+    // Cálculo do primeiro dígito verificador
+    for ($t = 12; $t < 14; $t++) {
+        $d = 0;
+        $pos = $t - 7;
+        for ($c = 0; $c < $t; $c++) {
+            $d += $cnpj[$c] * $pos--;
+            if ($pos < 2) {
+                $pos = 9;
+            }
+        }
+        $d = ($d % 11) < 2 ? 0 : 11 - ($d % 11);
+        if ($cnpj[$c] != $d) {
+            return false;
+        }
+    }
+
+    return true;
 }
