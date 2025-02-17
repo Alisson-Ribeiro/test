@@ -62,7 +62,7 @@
                     <div class="card shadow-sm text-center p-4">
                         <i class="bi bi-building fs-1 text-success"></i>
                         <h5 class="mt-2">Gerenciar Unidades</h5>
-                        <p class="text-muted">Configurar unidades do sistema</p>
+                        <p class="text-muted">Visualizar e gerenciar unidades</p>
                     </div>
                 </a>
             </div>
@@ -95,7 +95,7 @@
                     <div class="card shadow-sm text-center p-4">
                         <i class="bi bi-flag fs-1 text-info"></i>
                         <h5 class="mt-2">Gerenciar Bandeiras</h5>
-                        <p class="text-muted">Configurar bandeiras do sistema</p>
+                        <p class="text-muted">Visualizar e gerenciar bandeiras</p>
                     </div>
                 </a>
             </div>
@@ -106,7 +106,7 @@
                     <div class="card shadow-sm text-center p-4">
                         <i class="bi bi-person-badge fs-1 text-secondary"></i>
                         <h5 class="mt-2">Colaboradores</h5>
-                        <p class="text-muted">Gerenciar funcionários</p>
+                        <p class="text-muted">Visualizar e gerenciar funcionários</p>
                     </div>
                 </a>
             </div>
