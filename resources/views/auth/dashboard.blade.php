@@ -6,45 +6,18 @@
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    @livewireStyles
 </head>
 <body class="bg-light">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="bi bi-speedometer2"></i> Dashboard
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <span class="nav-link text-white"><i class="bi bi-person-circle"></i> {{ $user=Auth::user()->name }}</span>
-                    </li>
-                    <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
-                            @csrf
-                            <button type="submit" class="btn btn-danger">
-                                <i class="bi bi-box-arrow-right"></i> Sair
-                            </button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <livewire:navbar />
 
     <!-- Conteúdo do Dashboard -->
-    <div class="container mt-5">
-        <div class="text-center mb-4">
-            <h2 class="text-primary">Bem-vindo(a), {{ $user=Auth::user()->name }}!</h2>
-            <p class="text-muted">Este é seu painel de controle.</p>
-        </div>
+    <livewire:dashboard />
 
         <!-- Cards de Administração -->
-        <div class="row g-4">
+        {{-- <div class="row g-4">
             <!-- Usuários -->
             <div class="col-md-4">
                 <a href="{{ route('relatorios.index') }}" class="text-decoration-none">
@@ -111,7 +84,7 @@
                 </a>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
