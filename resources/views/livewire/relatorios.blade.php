@@ -1,18 +1,68 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatórios</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    @livewireStyles
-</head>
-<body>
-    @livewire('relatorios')
-    {{-- <div class="container mt-4">
+<div>
+    <div class="container mt-4">
         <h1 class="text-center mb-4">📊 Relatórios do Sistema</h1>
+    
+        <!-- Filtros -->
+        <div class="card mb-4 p-3">
+            <h5>🔍 Filtrar Relatórios</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="form-label">Filtrar por Unidade:</label>
+                    <select class="form-select" wire:model="filtroUnidade">
+                        <option value="">Todas</option>
+                        @foreach($dados['unidades'] as $unidade)
+                            <option value="{{ $unidade->id }}">{{ $unidade->id }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Filtrar por Bandeira:</label>
+                    <select class="form-select" wire:model="filtroBandeira">
+                        <option value="">Todas</option>
+                        @foreach($dados['bandeiras'] as $bandeira)
+                            <option value="{{ $bandeira->id }}">{{ $bandeira->nome }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Filtrar por Grupo Econômico:</label>
+                    <select class="form-select" wire:model="filtroGrupo">
+                        <option value="">Todos</option>
+                        @foreach($dados['grupos'] as $grupo)
+                            <option value="{{ $grupo->id }}">{{ $grupo->nome }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
 
-        <!-- Dados Gerais -->
+        <!-- Botões de Exportação -->
+        <div class="text-center mb-4">
+            <div class="row g-3">
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ route('export.colaborador') }}" class="btn btn-primary w-100">
+                        📂 Exportar Colaboradores
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ route('export.bandeira') }}" class="btn btn-primary w-100">
+                        📂 Exportar Bandeiras
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ route('export.unidade') }}" class="btn btn-primary w-100">
+                        📂 Exportar Unidades
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ route('export.grupo_economico') }}" class="btn btn-primary w-100">
+                        📂 Exportar Grupos Econômicos
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Indicadores -->
         <div class="card mb-4">
             <div class="card-body">
                 <h2 class="card-title">📌 Dados Gerais</h2>
@@ -39,10 +89,15 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
-
-        <!-- Listas de Dados -->
-        {{-- <div class="row">
+        </div>
+    
+        <!-- Exportação -->
+        <div class="text-center mb-4">
+            <button class="btn btn-primary" wire:click="$refresh">🔄 Atualizar</button>
+        </div>
+    
+        <!-- Relatórios Filtrados -->
+        <div class="row">
             <div class="col-md-6">
                 <div class="card mb-4">
                     <div class="card-body">
@@ -58,7 +113,7 @@
                     </div>
                 </div>
             </div>
-
+    
             <div class="col-md-6">
                 <div class="card mb-4">
                     <div class="card-body">
@@ -74,7 +129,7 @@
                     </div>
                 </div>
             </div>
-
+    
             <div class="col-md-6">
                 <div class="card mb-4">
                     <div class="card-body">
@@ -91,14 +146,11 @@
                 </div>
             </div>
         </div>
-
-        <!-- Botão Voltar -->
-        <div class="text-center mt-4 mb-4">
-            <a href="{{ route('dashboard') }}" class="btn btn-primary w-40">
-                 Voltar
-            </a>
+    
+        <!-- Voltar -->
+        <div class="text-center mt-4">
+            <a href="{{ route('dashboard') }}" class="btn btn-primary">Voltar</a>
         </div>
-    </div> --}}
-    @livewireScripts
-</body>
-</html>
+    </div>
+    
+</div>
