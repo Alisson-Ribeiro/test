@@ -91,7 +91,7 @@
             </div>
         </div>
     
-        <!-- Exportação -->
+        <!-- Botão para atualizar com os filtros selecionados -->
         <div class="text-center mb-4">
             <button class="btn btn-primary" wire:click="$refresh">🔄 Atualizar</button>
         </div>
@@ -99,6 +99,14 @@
         <!-- Relatórios Filtrados -->
         <div class="row">
             <div class="col-md-6">
+
+                <div x-data="{ open: false }">
+                    <button class="btn btn-secondary mb-3 w-100" @click="open = !open">
+                        <span x-text="open ? 'Ocultar' : 'Exibir'"></span> Detalhes para Unidades
+                    </button>
+            
+                    <div x-show="open" x-transition class="card card-body mt-2">
+
                 <div class="card mb-4">
                     <div class="card-body">
                         <h2 class="card-title">📌 Colaboradores por Unidade</h2>
@@ -111,10 +119,22 @@
                             @endforeach
                         </ul>
                     </div>
+
+                </div>
+            </div>
+
                 </div>
             </div>
     
             <div class="col-md-6">
+
+                <div x-data="{ open: false }">
+                    <button class="btn btn-secondary mb-3 w-100" @click="open = !open">
+                        <span x-text="open ? 'Ocultar' : 'Exibir'"></span> Detalhes para Bandeiras
+                    </button>
+            
+                    <div x-show="open" x-transition class="card card-body mt-2">
+
                 <div class="card mb-4">
                     <div class="card-body">
                         <h2 class="card-title">📌 Unidades por Bandeira</h2>
@@ -127,10 +147,22 @@
                             @endforeach
                         </ul>
                     </div>
+
+                </div>
+            </div>
+
                 </div>
             </div>
     
             <div class="col-md-6">
+
+                <div x-data="{ open: false }">
+                    <button class="btn btn-secondary mb-3 w-100" @click="open = !open">
+                        <span x-text="open ? 'Ocultar' : 'Exibir'"></span> Detalhes para Grupos Econômicos
+                    </button>
+            
+                    <div x-show="open" x-transition class="card card-body mt-2">
+
                 <div class="card mb-4">
                     <div class="card-body">
                         <h2 class="card-title">📌 Bandeiras por Grupo Econômico</h2>
@@ -144,6 +176,10 @@
                         </ul>
                     </div>
                 </div>
+
+            </div>
+        </div>
+
             </div>
         </div>
     
