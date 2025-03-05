@@ -13,6 +13,7 @@ class Relatorios extends Component
     public $filtroUnidade = '';
     public $filtroBandeira = '';
     public $filtroGrupo = '';
+    public $searchColaborador = '';
 
     public function render()
     {
@@ -30,6 +31,28 @@ class Relatorios extends Component
             'bandeiras' => Bandeira::all(),
             'grupos' => GrupoEconomico::all(),
         ];
+
+
+            // Consulta SEM filtro de nome para contar colaboradores por unidade
+            $dados['colaboradoresPorUnidade'] = Colaborador::selectRaw('unidade_id, COUNT(*) as total')
+            ->when($this->filtroUnidade, function ($query) {
+                return $query->where('unidade_id', $this->filtroUnidade);
+            })
+            ->groupBy('unidade_id')
+            ->get();
+    
+            // Consulta COM filtro de nome para listar colaboradores individualmente
+            $listaColaboradoresQuery = Colaborador::query();
+    
+            if (!empty($this->filtroUnidade)) {
+                $listaColaboradoresQuery->where('unidade_id', $this->filtroUnidade);
+            }
+    
+            if (!empty($this->searchColaborador)) {
+                $listaColaboradoresQuery->where('nome', 'LIKE', '%' . $this->searchColaborador . '%');
+            }
+    
+            $dados['listaColaboradores'] = $listaColaboradoresQuery->select('nome', 'unidade_id')->get();
 
         return view('livewire.relatorios', compact('dados'));
     }
