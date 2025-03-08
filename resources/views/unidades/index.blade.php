@@ -9,6 +9,9 @@
 </head>
 <body class="bg-light">
 
+    <!-- Navbar -->
+    <livewire:navbar />    
+
     <div class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="text-dark">Lista de Unidades</h1>
