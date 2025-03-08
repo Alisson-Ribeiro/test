@@ -108,7 +108,6 @@
         </div>
 
         <!-- Lista de colaboradores individualmente -->
-
         <div x-data="{ open: false }">
             <button class="btn btn-secondary mb-3 w-100" @click="open = !open">
                 <span x-text="open ? 'Ocultar' : 'Exibir'"></span> Lista de Colaboradores
@@ -146,12 +145,12 @@
                                                         class="position-absolute bg-light border rounded shadow p-2"
                                                         style="top: 100%; left: 50%; transform: translateX(-50%); z-index: 100; width: 350px;">
 
-                                                        <h6 class="mb-1">{{ $colaborador->nome }}</h6>
-                                                        <p class="mb-0">🏢 Unidade: {{ $colaborador->unidade_id }}
+                                                        <h6 class="mb-1"><strong>{{ $colaborador->nome }}</strong></h6>
+                                                        <p class="mb-0"><strong>🏢 Unidade: </strong>{{ $colaborador->unidade_id }}
                                                         </p>
-                                                        <p class="mb-0">🆔 ID: {{ $colaborador->id }}</p>
-                                                        <p class="mb-0">📧 E-mail: {{ $colaborador->email }}</p>
-                                                        <p class="mb-0">📄 CPF: {{ $colaborador->cpf }}</p>
+                                                        <p class="mb-0"><strong>🆔 ID: </strong>{{ $colaborador->id }}</p>
+                                                        <p class="mb-0"><strong>📧 E-mail: </strong>{{ $colaborador->email }}</p>
+                                                        <p class="mb-0"><strong>📄 CPF: </strong>{{ $colaborador->cpf }}</p>
                                                     </div>
                                                 </li>
                                             </a>
