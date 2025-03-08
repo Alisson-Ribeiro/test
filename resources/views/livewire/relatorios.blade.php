@@ -177,26 +177,22 @@
 
                     <div x-show="open" x-transition class="card card-body mt-2">
 
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title">📌 Colaboradores por Unidade</h2>
-                                <ul class="list-group">
-                                    @foreach ($dados['colaboradoresPorUnidade'] as $item)
-                                        <a href="{{ url('unidades/' . $item->unidade_id) }}"
-                                            class="text-decoration-none">
-                                            <li
-                                                class="list-group-item d-flex justify-content-between align-items-center">
-                                                <strong>Unidade {{ $item->unidade_id }}:</strong>
-                                                <span class="badge bg-primary">{{ $item->total }}
-                                                    colaboradores</span>
-                                            </li>
-                                        </a>
-                                    @endforeach
-                                </ul>
-                            </div>
-
-
+                        <div class="card-body">
+                            <h2 class="card-title">📌 Colaboradores por Unidade</h2>
+                            <ul class="list-group">
+                                @foreach ($dados['colaboradoresPorUnidade'] as $item)
+                                    <a href="{{ url('unidades/' . $item->unidade_id) }}"
+                                        class="text-decoration-none">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <strong>Unidade {{ $item->unidade_id }}:</strong>
+                                            <span class="badge bg-primary">{{ $item->total }}
+                                                colaboradores</span>
+                                        </li>
+                                    </a>
+                                @endforeach
+                            </ul>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -210,23 +206,19 @@
 
                     <div x-show="open" x-transition class="card card-body mt-2">
 
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title">📌 Unidades por Bandeira</h2>
-                                <ul class="list-group">
-                                    @foreach ($dados['unidadesPorBandeira'] as $item)
-                                        <a href="{{ url('bandeiras/' . $item->bandeira_id) }}"
-                                            class="text-decoration-none">
-                                            <li
-                                                class="list-group-item d-flex justify-content-between align-items-center">
-                                                <strong>Bandeira {{ $item->bandeira_id }}:</strong>
-                                                <span class="badge bg-success">{{ $item->total }} unidades</span>
-                                            </li>
-                                        </a>
-                                    @endforeach
-                                </ul>
-                            </div>
-
+                        <div class="card-body">
+                            <h2 class="card-title">📌 Unidades por Bandeira</h2>
+                            <ul class="list-group">
+                                @foreach ($dados['unidadesPorBandeira'] as $item)
+                                    <a href="{{ url('bandeiras/' . $item->bandeira_id) }}"
+                                        class="text-decoration-none">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <strong>Bandeira {{ $item->bandeira_id }}:</strong>
+                                            <span class="badge bg-success">{{ $item->total }} unidades</span>
+                                        </li>
+                                    </a>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -241,23 +233,19 @@
 
                     <div x-show="open" x-transition class="card card-body mt-2">
 
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title">📌 Bandeiras por Grupo Econômico</h2>
-                                <ul class="list-group">
-                                    @foreach ($dados['bandeirasPorGrupoEconomico'] as $item)
-                                        <a href="{{ url('grupo_economicos/' . $item->grupo_economico_id) }}"
-                                            class="text-decoration-none">
-                                            <li
-                                                class="list-group-item d-flex justify-content-between align-items-center">
-                                                <strong>Grupo {{ $item->grupo_economico_id }}:</strong>
-                                                <span class="badge bg-warning">{{ $item->total }} bandeiras</span>
-                                            </li>
-                                        </a>
-                                    @endforeach
-                                </ul>
-                            </div>
-
+                        <div class="card-body">
+                            <h2 class="card-title">📌 Bandeiras por Grupo Econômico</h2>
+                            <ul class="list-group">
+                                @foreach ($dados['bandeirasPorGrupoEconomico'] as $item)
+                                    <a href="{{ url('grupo_economicos/' . $item->grupo_economico_id) }}"
+                                        class="text-decoration-none">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <strong>Grupo {{ $item->grupo_economico_id }}:</strong>
+                                            <span class="badge bg-warning">{{ $item->total }} bandeiras</span>
+                                        </li>
+                                    </a>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>
