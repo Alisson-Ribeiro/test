@@ -114,7 +114,8 @@
             <div x-show="open" x-transition class="card card-body mt-2">
                     <div class="card-body mb-4">
                             <h2 class="card-title">📌 Lista de Colaboradores</h2>
-                            <ul class="list-group">
+
+                            {{-- <ul class="list-group">
                                 @forelse($dados['listaColaboradores'] as $colaborador)
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <strong>{{ $colaborador->nome }}</strong> 
@@ -123,7 +124,58 @@
                                 @empty
                                     <li class="list-group-item text-center">Nenhum colaborador encontrado.</li>
                                 @endforelse
+                            </ul> --}}
+
+                            <ul class="list-group">
+                                @forelse($dados['listaColaboradores'] as $colaborador)
+                                    <a href="{{ url('colaborador/' . $colaborador->id) }}" class="text-decoration-none">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center position-relative"
+                                            x-data="{ showCard: false }"
+                                            @mouseover="showCard = true"
+                                            @mouseleave="showCard = false">
+                            
+                                            <strong>{{ $colaborador->nome }}</strong> 
+                                            <span class="badge bg-primary">Unidade {{ $colaborador->unidade_id }}</span>
+                            
+                                            <!-- Card Flutuante -->
+                                            <div x-show="showCard" x-transition
+                                                class="position-absolute bg-light border rounded shadow p-2"
+                                                style="top: 100%; left: 50%; transform: translateX(-50%); z-index: 100; width: 350px;">
+                                                
+                                                <h6 class="mb-1">{{ $colaborador->nome }}</h6>
+                                                <p class="mb-0">🏢 Unidade: {{ $colaborador->unidade_id }}</p>
+                                                <p class="mb-0">🆔 ID: {{ $colaborador->id }}</p>
+                                                <p class="mb-0">📧 E-mail: {{ $colaborador->email }}</p>
+                                                <p class="mb-0">📄 CPF: {{ $colaborador->cpf }}</p>
+                                            </div>
+                                        </li>
+                                    </a>
+                                @empty
+                                    <li class="list-group-item text-center">Nenhum colaborador encontrado.</li>
+                                @endforelse
                             </ul>
+                            
+                            {{-- <div class="card mb-4">
+                                <div class="card-body">
+                                    <h2 class="card-title">📌 Lista de Colaboradores por Unidade</h2>
+                                    
+                                    @if($dados['listaColaboradores']->isEmpty())
+                                        <p class="text-center">Nenhum colaborador encontrado.</p>
+                                    @else
+                                        @foreach($dados['listaColaboradores']->groupBy('unidade_id') as $unidadeId => $colaboradores)
+                                            <h5 class="mt-3">🏢 Unidade {{ $unidadeId }}</h5>
+                                            <ul class="list-group">
+                                                @foreach($colaboradores as $colaborador)
+                                                    <li class="list-group-item">
+                                                        {{ $colaborador->nome }}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endforeach
+                                    @endif
+                                </div>
+                            </div> --}}
+                            
                     </div>
             </div>
         </div>

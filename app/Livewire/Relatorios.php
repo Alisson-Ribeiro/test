@@ -52,7 +52,7 @@ class Relatorios extends Component
                 $listaColaboradoresQuery->where('nome', 'LIKE', '%' . $this->searchColaborador . '%');
             }
     
-            $dados['listaColaboradores'] = $listaColaboradoresQuery->select('nome', 'unidade_id')->get();
+            $dados['listaColaboradores'] = $listaColaboradoresQuery->select('id', 'cpf' , 'email' , 'nome', 'unidade_id')->get();
 
         return view('livewire.relatorios', compact('dados'));
     }
