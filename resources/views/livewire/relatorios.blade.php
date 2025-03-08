@@ -124,31 +124,42 @@
                         @foreach ($dados['listaColaboradores']->groupBy('unidade_id') as $unidadeId => $colaboradores)
                             <h5 class="mt-3">🏢 Unidade {{ $unidadeId }}</h5>
 
-                            <ul class="list-group">
-                                @foreach ($colaboradores as $colaborador)
-                                    <a href="{{ url('colaborador/' . $colaborador->id) }}"
-                                        class="text-decoration-none">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center position-relative"
-                                            x-data="{ showCard: false }" @mouseover="showCard = true"
-                                            @mouseleave="showCard = false">
+                            <div x-data="{ open: false }">
+                                <button class="btn btn-secondary mb-3 w-100" @click="open = !open">
+                                    <span x-text="open ? 'Ocultar' : 'Exibir'"></span> Detalhes para Unidades
+                                </button>
 
-                                            <strong>{{ $colaborador->nome }}</strong>
+                                <div x-show="open" x-transition class="card card-body mt-2">
 
-                                            <!-- Card Flutuante -->
-                                            <div x-show="showCard" x-transition
-                                                class="position-absolute bg-light border rounded shadow p-2"
-                                                style="top: 100%; left: 50%; transform: translateX(-50%); z-index: 100; width: 350px;">
+                                    <ul class="list-group">
+                                        @foreach ($colaboradores as $colaborador)
+                                            <a href="{{ url('colaborador/' . $colaborador->id) }}"
+                                                class="text-decoration-none">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center position-relative"
+                                                    x-data="{ showCard: false }" @mouseover="showCard = true"
+                                                    @mouseleave="showCard = false">
 
-                                                <h6 class="mb-1">{{ $colaborador->nome }}</h6>
-                                                <p class="mb-0">🏢 Unidade: {{ $colaborador->unidade_id }}</p>
-                                                <p class="mb-0">🆔 ID: {{ $colaborador->id }}</p>
-                                                <p class="mb-0">📧 E-mail: {{ $colaborador->email }}</p>
-                                                <p class="mb-0">📄 CPF: {{ $colaborador->cpf }}</p>
-                                            </div>
-                                        </li>
-                                    </a>
-                                @endforeach
-                            </ul>
+                                                    <strong>{{ $colaborador->nome }}</strong>
+
+                                                    <!-- Card Flutuante -->
+                                                    <div x-show="showCard" x-transition
+                                                        class="position-absolute bg-light border rounded shadow p-2"
+                                                        style="top: 100%; left: 50%; transform: translateX(-50%); z-index: 100; width: 350px;">
+
+                                                        <h6 class="mb-1">{{ $colaborador->nome }}</h6>
+                                                        <p class="mb-0">🏢 Unidade: {{ $colaborador->unidade_id }}
+                                                        </p>
+                                                        <p class="mb-0">🆔 ID: {{ $colaborador->id }}</p>
+                                                        <p class="mb-0">📧 E-mail: {{ $colaborador->email }}</p>
+                                                        <p class="mb-0">📄 CPF: {{ $colaborador->cpf }}</p>
+                                                    </div>
+                                                </li>
+                                            </a>
+                                        @endforeach
+                                    </ul>
+
+                                </div>
+                            </div>
                         @endforeach
                     @endif
                 </div>
@@ -171,16 +182,19 @@
                                 <h2 class="card-title">📌 Colaboradores por Unidade</h2>
                                 <ul class="list-group">
                                     @foreach ($dados['colaboradoresPorUnidade'] as $item)
-                                    <a href="{{ url('unidades/' . $item->unidade_id) }}" class="text-decoration-none">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong>Unidade {{ $item->unidade_id }}:</strong>
-                                            <span class="badge bg-primary">{{ $item->total }} colaboradores</span>
-                                        </li>
-                                    </a>
+                                        <a href="{{ url('unidades/' . $item->unidade_id) }}"
+                                            class="text-decoration-none">
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                <strong>Unidade {{ $item->unidade_id }}:</strong>
+                                                <span class="badge bg-primary">{{ $item->total }}
+                                                    colaboradores</span>
+                                            </li>
+                                        </a>
                                     @endforeach
                                 </ul>
                             </div>
-                            
+
 
                         </div>
                     </div>
@@ -201,16 +215,18 @@
                                 <h2 class="card-title">📌 Unidades por Bandeira</h2>
                                 <ul class="list-group">
                                     @foreach ($dados['unidadesPorBandeira'] as $item)
-                                    <a href="{{ url('bandeiras/' . $item->bandeira_id) }}" class="text-decoration-none">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong>Bandeira {{ $item->bandeira_id }}:</strong>
-                                            <span class="badge bg-success">{{ $item->total }} unidades</span>
-                                        </li>
-                                    </a>
+                                        <a href="{{ url('bandeiras/' . $item->bandeira_id) }}"
+                                            class="text-decoration-none">
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                <strong>Bandeira {{ $item->bandeira_id }}:</strong>
+                                                <span class="badge bg-success">{{ $item->total }} unidades</span>
+                                            </li>
+                                        </a>
                                     @endforeach
                                 </ul>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -230,16 +246,18 @@
                                 <h2 class="card-title">📌 Bandeiras por Grupo Econômico</h2>
                                 <ul class="list-group">
                                     @foreach ($dados['bandeirasPorGrupoEconomico'] as $item)
-                                    <a href="{{ url('grupo_economicos/' . $item->grupo_economico_id) }}" class="text-decoration-none">
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            <strong>Grupo {{ $item->grupo_economico_id }}:</strong>
-                                            <span class="badge bg-warning">{{ $item->total }} bandeiras</span>
-                                        </li>
-                                    </a>
+                                        <a href="{{ url('grupo_economicos/' . $item->grupo_economico_id) }}"
+                                            class="text-decoration-none">
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                <strong>Grupo {{ $item->grupo_economico_id }}:</strong>
+                                                <span class="badge bg-warning">{{ $item->total }} bandeiras</span>
+                                            </li>
+                                        </a>
                                     @endforeach
                                 </ul>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
