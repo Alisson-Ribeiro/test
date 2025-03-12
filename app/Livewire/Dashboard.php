@@ -16,7 +16,9 @@ class Dashboard extends Component
             ['rota' => 'grupo_economicos.index', 'icone' => 'bi-bank', 'titulo' => 'Grupos Econômicos', 'descricao' => 'Visualizar e gerenciar grupos', 'cor' => 'text-warning'],
             ['rota' => 'auditoria.index', 'icone' => 'bi-file-earmark-text', 'titulo' => 'Auditoria', 'descricao' => 'Consultar logs do sistema', 'cor' => 'text-danger'],
             ['rota' => 'bandeiras.index', 'icone' => 'bi-flag', 'titulo' => 'Gerenciar Bandeiras', 'descricao' => 'Visualizar e gerenciar bandeiras', 'cor' => 'text-info'],
-            ['rota' => 'colaborador.index', 'icone' => 'bi-person-badge', 'titulo' => 'Colaboradores', 'descricao' => 'Visualizar e gerenciar funcionários', 'cor' => 'text-secondary']
+            ['rota' => 'colaborador.index', 'icone' => 'bi-person-badge', 'titulo' => 'Colaboradores', 'descricao' => 'Visualizar e gerenciar funcionários', 'cor' => 'text-secondary'],
+            ['rota' => 'colaborador.index', 'icone' => 'bi-truck', 'titulo' => 'Estoque e Logística', 'descricao' => 'Gestão de estoques e logística', 'cor' => 'text-dark'],
+            ['rota' => 'colaborador.index', 'icone' => 'bi-cash-coin', 'titulo' => 'Financeiro', 'descricao' => 'Gestão Financeira', 'cor' => 'text-success']
             // add more cards here
         ];
     }
