@@ -9,6 +9,7 @@ use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\GrupoEconomicoController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ClienteController;
 
 // Rotas protegidas pelo middleware "auth"
 Route::middleware(['auth'])->group(function() {
@@ -16,6 +17,7 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('bandeiras', BandeiraController::class);
     Route::resource('unidades', UnidadeController::class);
     Route::resource('colaborador', ColaboradorController::class);
+    Route::resource('clientes', ClienteController::class);
 
     Route::get('/relatorios', [RelatorioController::class, 'index'])->name('relatorios.index');
 
