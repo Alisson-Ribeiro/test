@@ -12,6 +12,20 @@
             background-color: #f8f9fa;
             transition: all 0.3s ease-in-out;
         }
+        .table th, .table td {
+            white-space: nowrap; /* Evita que o conteúdo quebre linha */
+            overflow: hidden; /* Oculta o conteúdo extra */
+            text-overflow: ellipsis; /* Adiciona "..." caso o conteúdo seja cortado */
+        }
+
+        .table th:nth-child(1), .table td:nth-child(1) { width: 5%; } 
+        .table th:nth-child(2), .table td:nth-child(2) { width: 15%; }
+        .table th:nth-child(3), .table td:nth-child(3) { width: 15%; }
+        .table th:nth-child(4), .table td:nth-child(4) { width: 10%; }
+        .table th:nth-child(5), .table td:nth-child(5) { width: 15%; }
+        .table th:nth-child(6), .table td:nth-child(6) { width: 25%; }
+        .table th:nth-child(7), .table td:nth-child(7) { width: 10%; text-align: center; }
+
     </style>
 </head>
 <body class="bg-light">

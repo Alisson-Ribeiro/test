@@ -6,6 +6,21 @@
     <title>Lista de Unidades</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        .table th, .table td {
+            white-space: nowrap; /* Evita que o conteúdo quebre linha */
+            overflow: hidden; /* Oculta o conteúdo extra */
+            text-overflow: ellipsis; /* Adiciona "..." caso o conteúdo seja cortado */
+        }
+
+        .table th:nth-child(1), .table td:nth-child(1) { width: 10%; }
+        .table th:nth-child(2), .table td:nth-child(2) { width: 15%; }
+        .table th:nth-child(3), .table td:nth-child(3) { width: 20%; }
+        .table th:nth-child(4), .table td:nth-child(4) { width: 15%; }
+        .table th:nth-child(5), .table td:nth-child(5) { width: 20%; }
+        .table th:nth-child(6), .table td:nth-child(6) { width: 20%; text-align: center; }
+
+    </style>
 </head>
 <body class="bg-light">
 
