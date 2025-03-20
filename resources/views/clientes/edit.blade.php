@@ -43,7 +43,7 @@
 
             <div class="mb-3">
                 <label for="telefone" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefone" name="telefone" value="{{ old('telefone', $cliente->telefone) }}">
+                <input type="text" class="form-control" id="telefone" name="telefone" value="{{ old('telefone', $cliente->telefone) }}">
             </div>
 
             <div class="mb-3">
