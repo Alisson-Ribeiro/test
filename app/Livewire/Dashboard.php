@@ -20,7 +20,7 @@ class Dashboard extends Component
             ['rota' => 'colaborador.index', 'icone' => 'bi-truck', 'titulo' => 'Estoque e Logística', 'descricao' => 'Gestão de estoques e logística', 'cor' => 'text-dark'],
             ['rota' => 'colaborador.index', 'icone' => 'bi-cash-coin', 'titulo' => 'Financeiro', 'descricao' => 'Gestão financeira', 'cor' => 'text-success'],
             ['rota' => 'colaborador.index', 'icone' => 'bi-graph-up-arrow', 'titulo' => 'Vendas', 'descricao' => 'Vendas e pagamentos', 'cor' => 'text-primary'],
-            ['rota' => 'colaborador.index', 'icone' => 'bi-person', 'titulo' => 'Clientes', 'descricao' => 'Cadastro de clientes', 'cor' => 'text-info'],
+            ['rota' => 'clientes.index', 'icone' => 'bi-person', 'titulo' => 'Clientes', 'descricao' => 'Cadastro de clientes', 'cor' => 'text-info'],
             ['rota' => 'colaborador.index', 'icone' => 'bi-box-seam', 'titulo' => 'Produtos', 'descricao' => 'Cadastro de produtos', 'cor' => 'text-warning']
             // add more cards here
         ];
