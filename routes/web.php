@@ -3,13 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuditController;
 use App\Http\Controllers\ExportController;
+use App\Http\Controllers\VendasController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EstoqueController;
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UnidadeController;
 use App\Http\Controllers\BandeiraController;
 use App\Http\Controllers\RelatorioController;
+use App\Http\Controllers\FinanceiroController;
 use App\Http\Controllers\ColaboradorController;
 use App\Http\Controllers\GrupoEconomicoController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\ClienteController;
 
 // Rotas protegidas pelo middleware "auth"
 Route::middleware(['auth'])->group(function() {
@@ -18,6 +22,10 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('unidades', UnidadeController::class);
     Route::resource('colaborador', ColaboradorController::class);
     Route::resource('clientes', ClienteController::class);
+    Route::resource('financeiro', FinanceiroController::class);
+    Route::resource('vendas', VendasController::class);
+    Route::resource('produtos', ProdutoController::class);
+    Route::resource('estoque', EstoqueController::class);
 
     Route::get('/relatorios', [RelatorioController::class, 'index'])->name('relatorios.index');
 

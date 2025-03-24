@@ -17,11 +17,11 @@ class Dashboard extends Component
             ['rota' => 'auditoria.index', 'icone' => 'bi-file-earmark-text', 'titulo' => 'Auditoria', 'descricao' => 'Consultar logs do sistema', 'cor' => 'text-danger'],
             ['rota' => 'bandeiras.index', 'icone' => 'bi-flag', 'titulo' => 'Gerenciar Bandeiras', 'descricao' => 'Visualizar e gerenciar bandeiras', 'cor' => 'text-info'],
             ['rota' => 'colaborador.index', 'icone' => 'bi-person-badge', 'titulo' => 'Colaboradores', 'descricao' => 'Visualizar e gerenciar funcionários', 'cor' => 'text-secondary'],
-            ['rota' => 'colaborador.index', 'icone' => 'bi-truck', 'titulo' => 'Estoque e Logística', 'descricao' => 'Gestão de estoques e logística', 'cor' => 'text-dark'],
-            ['rota' => 'colaborador.index', 'icone' => 'bi-cash-coin', 'titulo' => 'Financeiro', 'descricao' => 'Gestão financeira', 'cor' => 'text-success'],
-            ['rota' => 'colaborador.index', 'icone' => 'bi-graph-up-arrow', 'titulo' => 'Vendas', 'descricao' => 'Vendas e pagamentos', 'cor' => 'text-primary'],
+            ['rota' => 'estoque.index', 'icone' => 'bi-truck', 'titulo' => 'Estoque e Logística', 'descricao' => 'Gestão de estoques e logística', 'cor' => 'text-dark'],
+            ['rota' => 'financeiro.index', 'icone' => 'bi-cash-coin', 'titulo' => 'Financeiro', 'descricao' => 'Gestão financeira', 'cor' => 'text-success'],
+            ['rota' => 'vendas.index', 'icone' => 'bi-graph-up-arrow', 'titulo' => 'Vendas', 'descricao' => 'Vendas e pagamentos', 'cor' => 'text-primary'],
             ['rota' => 'clientes.index', 'icone' => 'bi-person', 'titulo' => 'Clientes', 'descricao' => 'Cadastro de clientes', 'cor' => 'text-info'],
-            ['rota' => 'colaborador.index', 'icone' => 'bi-box-seam', 'titulo' => 'Produtos', 'descricao' => 'Cadastro de produtos', 'cor' => 'text-warning']
+            ['rota' => 'produtos.index', 'icone' => 'bi-box-seam', 'titulo' => 'Produtos', 'descricao' => 'Cadastro de produtos', 'cor' => 'text-warning']
             // add more cards here
         ];
     }
