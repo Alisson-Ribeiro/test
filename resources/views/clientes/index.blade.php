@@ -15,13 +15,18 @@
         }
 
         .table th:nth-child(1), .table td:nth-child(1) { width: 5%; }  /* ID */
-        .table th:nth-child(2), .table td:nth-child(2) { width: 15%; } /* Nome */
-        .table th:nth-child(3), .table td:nth-child(3) { width: 20%; } /* Email */
+        .table th:nth-child(2), .table td:nth-child(2) { width: 20%; } /* Nome */
+        .table th:nth-child(3), .table td:nth-child(3) { width: 25%; } /* Email */
         .table th:nth-child(4), .table td:nth-child(4) { width: 10%; } /* Telefone */
         .table th:nth-child(5), .table td:nth-child(5) { width: 15%; } /* CNPJ */
         .table th:nth-child(6), .table td:nth-child(6) { width: 25%; } /* Endereço */
-        .table th:nth-child(7), .table td:nth-child(7) { width: 10%; text-align: center; } /* Ações */
 
+        .clickable-row {
+            cursor: pointer;
+        }
+        .clickable-row:hover {
+            background-color: #f8f9fa;
+        }
 
     </style>
 </head>
@@ -57,34 +62,17 @@
                         <th>Telefone</th>
                         <th>CNPJ</th>
                         <th>Endereço</th>
-                        <th class="text-center">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($cliente as $cliente)
-                        <tr>
+                        <tr class="clickable-row" data-href="{{ route('clientes.show', $cliente->id) }}">
                             <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->nome }}</td>
                             <td>{{ $cliente->email }}</td>
                             <td>{{ $cliente->telefone }}</td>
                             <td>{{ $cliente->cnpj }}</td>
                             <td>{{ $cliente->endereco}}</td>
-                            <td class="text-center">
-                                <a href="{{ route('clientes.show', $cliente->id) }}" class="btn btn-primary btn-sm" title="Ver detalhes">
-                                    <i class="bi bi-eye"></i> Ver
-                                </a>
-                                <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning btn-sm" title="Editar cliente">
-                                    <i class="bi bi-pencil"></i> Editar
-                                </a>
-                                <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" class="d-inline"
-                                      onsubmit="return confirm('Tem certeza que deseja excluir este cliente?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" title="Excluir cliente">
-                                        <i class="bi bi-trash"></i> Excluir
-                                    </button>
-                                </form>
-                            </td>
                         </tr>
                     @empty
                         <tr>
@@ -93,6 +81,19 @@
                     @endforelse
                 </tbody>
             </table>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    document.querySelectorAll('.clickable-row').forEach(function(row) {
+                        row.addEventListener('click', function(e) {
+                            // Impede ação se o clique for em um link ou botão
+                            if (e.target.closest('a') || e.target.closest('button') || e.target.tagName === 'I') {
+                                return;
+                            }
+                            window.location.href = this.dataset.href;
+                        });
+                    });
+                });
+            </script>
         </div>
     </div>
     <div class="text-center mt-4 mb-4">
