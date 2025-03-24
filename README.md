@@ -1,3 +1,37 @@
+![GitHub License](https://img.shields.io/github/license/Alisson-Ribeiro/test?style=flat-square)
+<br>
+![GitHub Repo Size](https://img.shields.io/github/repo-size/Alisson-Ribeiro/test?style=flat-square)
+<br>
+![GitHub Issues](https://img.shields.io/github/issues/Alisson-Ribeiro/test?style=flat-square)
+<br>
+![GitHub Stars](https://img.shields.io/github/stars/Alisson-Ribeiro/test?style=flat-square)
+<br>
+
+📧 E-mail: alissonribeirow1@gmail.com
+<br>
+🐙 GitHub: Alisson-Ribeiro
+<br>
+💼 LinkedIn: https://www.linkedin.com/in/alisson-ribeiro-69680653/
+
+🤝 Contribuindo
+<br>
+<br>
+Contribuições são bem-vindas!
+<br>
+<br>
+Para contribuir:
+<br>
+<br>
+Fork o repositório
+<br>
+Crie um branch (git checkout -b minha-nova-feature)
+<br>
+Faça um commit (git commit -m 'Adicionando nova feature')
+<br>
+Faça um push para o branch (git push origin minha-nova-feature)
+<br>
+Abra um Pull Request
+
 ## PT-BR
 ## Instalar esse projeto no seu ambiente de desenvolvimento é simples
 
