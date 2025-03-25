@@ -8,6 +8,6 @@ class ProdutoController extends Controller
 {
     public function index()
     {
-        return view('em-breve.em-breve');
+        return view('produtos.index');
     }
 }
