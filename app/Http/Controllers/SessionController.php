@@ -36,7 +36,7 @@ class SessionController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => $request->password,
         ]);
 
         // dd($request->all());  🔥 Exibe os dados recebidos na requisição

@@ -41,7 +41,16 @@
                         <!-- Campo Senha -->
                         <div class="mb-3">
                             <label class="form-label"><i class="bi bi-lock"></i> Senha</label>
-                            <input type="password" name="password" class="form-control" placeholder="Digite sua senha" required>
+                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Digite sua senha" required>
+                            @error('password')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Confirmação de Senha -->
+                        <div class="mb-3">
+                            <label class="form-label"><i class="bi bi-lock-fill"></i> Confirmar Senha</label>
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="Confirme sua senha" required>
                         </div>
 
                         <!-- Botão de Registro -->
