@@ -1,30 +1,48 @@
 <div>
-    <div class="container mt-5">
-        <div class="text-center mb-4">
-            <h2 class="text-primary">Bem-vindo(a)!</h2>
-            <p class="text-muted">Este é seu painel de controle.</p>
+    <div class="container">
+        <div class="erp-page-header">
+            <div>
+                <h1 class="erp-page-title">Painel de Controle</h1>
+                <p class="erp-page-subtitle">Bem-vindo de volta. Selecione um módulo para começar.</p>
+            </div>
         </div>
-    
-        {{-- adds the loading spinner visual feedback --}}
-        <div wire:loading class="text-center">
-            <div class="spinner-border text-primary" role="status">
+
+        <div wire:loading class="text-center mb-4">
+            <div class="spinner-border" role="status" style="width:1.5rem;height:1.5rem;">
                 <span class="visually-hidden">Carregando...</span>
             </div>
         </div>
-    
-        <div class="row g-4">
+
+        <div class="row g-3">
             @foreach($cards as $card)
-                <div class="col-md-4">
-                    <a href="{{ route($card['rota']) }}" class="text-decoration-none">
-                        <div class="card shadow-sm text-center p-4">
-                            <i class="bi {{ $card['icone'] }} fs-1 {{ $card['cor'] }}"></i>
-                            <h5 class="mt-2">{{ $card['titulo'] }}</h5>
-                            <p class="text-muted">{{ $card['descricao'] }}</p>
+                @php
+                    $colorMap = [
+                        'text-primary'   => 'blue',
+                        'text-success'   => 'green',
+                        'text-warning'   => 'amber',
+                        'text-danger'    => 'red',
+                        'text-info'      => 'cyan',
+                        'text-secondary' => 'purple',
+                        'text-dark'      => 'blue',
+                        'text-muted'     => 'blue',
+                    ];
+                    $cc = $colorMap[$card['cor']] ?? 'blue';
+                @endphp
+                <div class="col-sm-6 col-lg-4 col-xl-3">
+                    <a href="{{ route($card['rota']) }}" class="erp-module">
+                        <div class="erp-module__icon {{ $cc }}">
+                            <i class="bi {{ $card['icone'] }}"></i>
+                        </div>
+                        <div>
+                            <div class="erp-module__title">{{ $card['titulo'] }}</div>
+                            <div class="erp-module__desc">{{ $card['descricao'] }}</div>
+                        </div>
+                        <div class="erp-module__arrow">
+                            <i class="bi bi-arrow-right"></i>
                         </div>
                     </a>
                 </div>
             @endforeach
         </div>
     </div>
-    
 </div>

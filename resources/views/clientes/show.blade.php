@@ -1,46 +1,77 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Cliente</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-</head>
-<body>
-
-    <!-- Navbar -->
-    <livewire:navbar />
-
-    <div class="container mt-5">
-        <h1 class="mb-4">Detalhes do Cliente</h1>
-
-        <div class="card">
-            <div class="card-header">
-                <strong>{{ $cliente->nome}}</strong>
+@extends('layouts.erp')
+@section('title', 'Cliente — ' . $cliente->nome)
+@section('content')
+<div class="container">
+    <div class="erp-page-header">
+        <div>
+            <div class="erp-breadcrumb">
+                <a href="{{ route('dashboard') }}">Dashboard</a>
+                <i class="bi bi-chevron-right"></i>
+                <a href="{{ route('clientes.index') }}">Clientes</a>
+                <i class="bi bi-chevron-right"></i>
+                <span>Detalhes</span>
             </div>
-            <div class="card-body">
-                <p><strong>E-mail: </strong>{{ $cliente->email }}</p>
-                <p><strong>Telefone: </strong>{{ $cliente->telefone }}</p>
-                <p><strong>CNPJ: </strong>{{ $cliente->cnpj }}</p>
-                <p><strong>Endereço: </strong>{{ $cliente->endereco }}</p>
-                <p><strong>Data de Criação:</strong> {{ $cliente->created_at->format('d/m/Y H:i') }}</p>
-                <p><strong>Última Atualização:</strong> {{ $cliente->updated_at->format('d/m/Y H:i') }}</p>
-            </div>
+            <h1 class="erp-page-title">{{ $cliente->nome }}</h1>
+            <p class="erp-page-subtitle">Detalhes do cliente</p>
         </div>
-
-        <div class="mt-3">
-            <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Voltar</a>
-            <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning">Editar</a>
-            
-            <!-- Formulário para exclusão -->
-            <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" class="d-inline"
-                  onsubmit="return confirm('Tem certeza que deseja excluir este cliente?');">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Excluir</button>
+        <div class="d-flex gap-2">
+            <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-warning">
+                <i class="bi bi-pencil"></i> Editar
+            </a>
+            <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST"
+                  onsubmit="return confirm('Tem certeza que deseja excluir este cliente?')">
+                @csrf @method('DELETE')
+                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Excluir</button>
             </form>
         </div>
     </div>
-</body>
-</html>
+
+    <div class="erp-card" style="max-width:720px;">
+        <div class="erp-card-header">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <div class="erp-module__icon cyan" style="width:40px;height:40px;font-size:1rem;">
+                    <i class="bi bi-person-fill"></i>
+                </div>
+                <div>
+                    <div class="erp-card-title">{{ $cliente->nome }}</div>
+                    <div style="font-size:.75rem;color:var(--t3);">Cliente #{{ $cliente->id }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="erp-card-body">
+            <div class="erp-detail-grid">
+                <div>
+                    <div class="erp-detail-label">E-mail</div>
+                    <div class="erp-detail-value">{{ $cliente->email }}</div>
+                </div>
+                <div>
+                    <div class="erp-detail-label">Telefone</div>
+                    <div class="erp-detail-value mono">{{ $cliente->telefone ?: '—' }}</div>
+                </div>
+                <div>
+                    <div class="erp-detail-label">CNPJ</div>
+                    <div class="erp-detail-value mono">{{ $cliente->cnpj }}</div>
+                </div>
+                <div>
+                    <div class="erp-detail-label">Endereço</div>
+                    <div class="erp-detail-value">{{ $cliente->endereco ?: '—' }}</div>
+                </div>
+                <div>
+                    <div class="erp-detail-label">Cadastrado em</div>
+                    <div class="erp-detail-value mono">{{ $cliente->created_at->format('d/m/Y H:i') }}</div>
+                </div>
+                <div>
+                    <div class="erp-detail-label">Última atualização</div>
+                    <div class="erp-detail-value mono">{{ $cliente->updated_at->format('d/m/Y H:i') }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a href="{{ route('clientes.index') }}" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Voltar à lista
+        </a>
+    </div>
+</div>
+@endsection
